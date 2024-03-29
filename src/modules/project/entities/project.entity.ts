@@ -1,13 +1,13 @@
-import { Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 
-@Entity()
+@Entity('projects')
 export class Project {
 
   @PrimaryGeneratedColumn()
-  id: bigint
+  id: number
 
-  @String({type: 'unique'})
+  @Column({type:'text'})
   name: string
 
 }

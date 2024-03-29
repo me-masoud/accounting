@@ -1,8 +1,9 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { User } from './src/entities/user.entity';
-import * as process from 'process';
-import { SystemPointType } from './src/system_point_type/entities/system_point_type.entity';
-import { SystemPoint } from './src/system_point/entities/system_point.entity';
+import { User } from '../modules/user/entities/user.entity';
+import { Transaction } from 'typeorm';
+import { TransactionType } from '../modules/transaction_type/entities/transaction_type.entity';
+import { Status } from '../modules/status/entities/status.entity';
+import { Project } from '../modules/project/entities/project.entity';
 
 
 const config: TypeOrmModuleOptions = {
@@ -12,7 +13,7 @@ const config: TypeOrmModuleOptions = {
   username: "root",
   password: "Masoud12@",
   database: "accounting",
-  entities: [User],
+  entities: [User, Transaction , TransactionType , Status, Project],
   synchronize: true,
 };
 
