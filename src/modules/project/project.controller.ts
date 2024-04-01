@@ -12,8 +12,7 @@ export class ProjectController {
   @Post()
   async create(@Body() createProjectDto: CreateProjectDto): Promise<Project> {
     try {
-      const project = await this.projectService.create(createProjectDto);
-      return project; // Return the created project
+      return await this.projectService.create(createProjectDto);
     } catch (error) {
       throw new HttpException(error.message, error.status); // Handle internal server errors
     }

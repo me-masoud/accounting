@@ -6,9 +6,20 @@ import { TransactionModule } from './modules/transaction/transaction.module';
 import { StatusModule } from './modules/status/status.module';
 import { ProjectModule } from './modules/project/project.module';
 import { TransactionTypeModule } from './modules/transaction_type/transaction_type.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserBanksModule } from './modules/user_banks/user_banks.module';
+import config from './config/typeorm.config';
 
 @Module({
-  imports: [UserModule, TransactionModule, StatusModule, ProjectModule, TransactionTypeModule],
+  imports: [
+    TypeOrmModule.forRoot(config),
+    UserModule,
+    TransactionModule,
+    StatusModule,
+    ProjectModule,
+    TransactionTypeModule,
+    UserBanksModule
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

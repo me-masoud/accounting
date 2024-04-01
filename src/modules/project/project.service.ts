@@ -1,4 +1,4 @@
-import { Controller, Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
 import { Project } from './entities/project.entity';
@@ -22,11 +22,11 @@ export class ProjectService {
   }
 
   async findOne(id: number): Promise<Project | undefined> {
-    return await this.projectRepository.findOne(id);
+    return await this.projectRepository.findOneBy({ id: id });
   }
 
   async update(id: number, updateProjectDto: UpdateProjectDto): Promise<Project> {
-    const project = await this.projectRepository.findOne(id);
+    const project = await this.projectRepository.findOneBy({ id: id });
     if (!project) {
       throw new NotFoundException(`Project with ID ${id} not found`); // Handle not found scenario
     }
